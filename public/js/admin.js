@@ -295,6 +295,7 @@ document.getElementById("productImage").addEventListener("change", function () {
     },
   }).then((res) => {
     console.log("업로드된 이미지 URL:", res.data);
+    document.getElementById("preview").display = "block";
     document.getElementById("preview").src = res.data.productImage;
   });
 });
