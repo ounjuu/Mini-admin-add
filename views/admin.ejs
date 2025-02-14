@@ -17,7 +17,7 @@
       <!-- 헤더 만들기 -->
       <div class="shopHeader"></div>
       <!-- 본문 시작 -->
-      <div class="contentBox">
+      <div class="contentWrapBox">
         <!-- 등록 부분 -->
         <div class="addBox">
           <div class="productAddText"><p>상품등록</p></div>
@@ -105,7 +105,7 @@
               </div>
 
               <!-- 이미지 업로드 -->
-              <div class="imageUpBox formBoxdiv">
+              <div class="formBoxdiv">
                 <div class="labelBox">
                   <label for="productImage">이미지</label>
                 </div>
@@ -114,7 +114,18 @@
                   name="productImage"
                   id="productImage"
                   onchange="imageonChange()"
+                  style="display: none"
+                  required
                 />
+                <div id="uploadDiv" class="uploadDiv">
+                  <img
+                    src="/public/img/plus_icon.png"
+                    alt="Upload Image"
+                    id="uploadImage"
+                  />
+                </div>
+                <div id="imgpreviewbox"><img id="preview" src="" /></div>
+                <div id="fileName"></div>
               </div>
               <div class="imageupText"></div>
               <!-- 버튼 -->

@@ -175,6 +175,7 @@ function resetForm() {
   document.querySelector(".contentText").innerText = "";
   document.querySelector(".idText").innerText = "";
   document.querySelector(".imageupText").innerText = "";
+  document.getElementById("preview").src = "";
 
   // 체크 변수 초기화
   nameCheck = false;
@@ -268,3 +269,32 @@ const deleteData = (id) => {
   product_data = delete_data;
   localStorage.setItem("data", JSON.stringify(product_data));
 };
+
+// 이미지 불러오기 버튼 클릭 시 파일 선택 창 열기
+document.getElementById("uploadDiv").addEventListener("click", function () {
+  document.getElementById("productImage").click();
+});
+
+// 파일 선택 시 파일명을 표시하는 이벤트 리스너 추가
+document.getElementById("productImage").addEventListener("change", function () {
+  const fileName =
+    this.files.length > 0 ? this.files[0].name : "선택된 파일 없음";
+  document.getElementById("fileName").innerText = fileName;
+
+  const file = this.files[0];
+  if (!file) return;
+  const formData2 = new FormData();
+  formData2.append("productImage", file);
+
+  axios({
+    method: "post",
+    url: "/nowimg",
+    data: formData2,
+    headers: {
+      "Content-type": "multipart/form-data",
+    },
+  }).then((res) => {
+    console.log("업로드된 이미지 URL:", res.data);
+    document.getElementById("preview").src = res.data.productImage;
+  });
+});

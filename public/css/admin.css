@@ -1,3 +1,18 @@
+/* 본문 중앙 정렬 */
+.contentWrapBox {
+  display: flex;
+  justify-content: center;
+}
+
+.addBox {
+  width: 1280px;
+  min-height: 500px;
+  border: 2px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+}
+
+/* 폼 input CSS */
 .formBoxdiv {
   display: flex;
 }
@@ -11,4 +26,28 @@
   width: 100px;
   height: 100px;
   overflow: hidden;
+}
+
+.formBoxdiv {
+  display: flex;
+}
+
+#fileName {
+  width: 100px;
+  height: 20px;
+  background-color: pink;
+}
+
+/* 이미지 버튼 만들기 */
+.uploadDiv {
+  width: 100px;
+  height: 100px;
+  background-color: cornflowerblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#uploadImage {
+  width: 25px;
+  height: 25px;
 }

@@ -58,6 +58,12 @@ app.post("/idcheck", (req, res) => {
   res.json({ id: Number(id) });
 });
 
+app.post("/nowimg", upload.single("productImage"), (req, res) => {
+  console.log(req.file, "오긴 하나");
+  const productImage = req.file ? "/uploads/" + req.file.filename : null;
+  res.send({ productImage });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
