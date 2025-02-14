@@ -1,0 +1,25 @@
+{
+  "name": "mini-admin-add",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ounjuu/Mini-admin-add.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ounjuu/Mini-admin-add/issues"
+  },
+  "homepage": "https://github.com/ounjuu/Mini-admin-add#readme",
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/admin.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- 헤더 만들기 -->
+      <div class="shopHeader"></div>
+      <!-- 본문 시작 -->
+      <div class="contentBox">
+        <!-- 등록 부분 -->
+        <div class="addBox">
+          <div class="productAddText"><p>상품등록</p></div>
+          <div class="formBox">
+            <form
+              action="/addProduct"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <!-- 상품명 -->
+              <div class="nameBox formBoxdiv">
+                <div class="labelBox">
+                  <label for="name"
+                    >상품명 <span class="blueText">(필수)</span></label
+                  >
+                </div>
+                <div class="inputBox">
+                  <input
+                    placeholder="상품명을 입력해 주세요."
+                    id="nameInput"
+                    name="name"
+                    oninput="nameonInput()"
+                    required
+                  />
+                  <div class="nameText"></div>
+                </div>
+              </div>
+              <!-- 가격 숫자 -->
+              <div class="priceBox formBoxdiv">
+                <div class="labelBox">
+                  <label for="price"
+                    >판매가 <span class="blueText">(필수)</span></label
+                  >
+                </div>
+                <div class="inputBox">
+                  <input
+                    placeholder="판매가를 입력해 주세요."
+                    id="priceInput"
+                    name="price"
+                    type="number"
+                    oninput="priceonInput()"
+                    required
+                  />
+                  <div class="priceText"></div>
+                </div>
+              </div>
+
+              <!-- 아이디 숫자로만 / 중복 불가 -->
+              <div class="idBox formBoxdiv">
+                <div class="labelBox">
+                  <label for="id">자체 상품 코드</label>
+                </div>
+                <div class="inputBox">
+                  <input
+                    name="id"
+                    type="number"
+                    placeholder="숫자로 입력해 주세요."
+                    id="idInput"
+                    oninput="idonInput()"
+                    required
+                  />
+
+                  <div class="idText"></div>
+                </div>
+                <div class="idCheckBtn">중복확인</div>
+              </div>
+
+              <!-- 상세내용 -->
+              <div class="contentBox formBoxdiv">
+                <div class="labelBox">
+                  <label for="content">상품 상세설명</label>
+                </div>
+                <div class="inputBox">
+                  <textarea
+                    placeholder="상세내용을 입력해 주세요."
+                    id="contentInput"
+                    name="content"
+                    oninput="contentonInput()"
+                    required
+                  ></textarea>
+                  <div class="contentText"></div>
+                </div>
+              </div>
+
+              <!-- 이미지 업로드 -->
+              <div class="imageUpBox formBoxdiv">
+                <div class="labelBox">
+                  <label for="productImage">이미지</label>
+                </div>
+                <input type="file" name="productImage" />
+              </div>
+              <!-- 버튼 -->
+              <div class="savebtnWrap">
+                <button
+                  id="savebtn"
+                  class="svbtn bottomfont"
+                  onclick="save()"
+                  disabled="true"
+                >
+                  저장
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- 테이블 여기에 저장~ -->
+          <div class="mainTableWrap"></div>
+        </div>
+      </div>
+      <!-- 푸터 -->
+      <div class="footer_wrap"></div>
+    </div>
+
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="/public/js/admin.js"></script>
+  </body>
+</html>
