@@ -23,6 +23,7 @@
           <div class="productAddText"><p>상품등록</p></div>
           <div class="formBox">
             <form
+              name="formName"
               action="/addProduct"
               method="post"
               enctype="multipart/form-data"
@@ -30,15 +31,15 @@
               <!-- 상품명 -->
               <div class="nameBox formBoxdiv">
                 <div class="labelBox">
-                  <label for="name"
+                  <label for="productName"
                     >상품명 <span class="blueText">(필수)</span></label
                   >
                 </div>
                 <div class="inputBox">
                   <input
                     placeholder="상품명을 입력해 주세요."
-                    id="nameInput"
-                    name="name"
+                    id="productName"
+                    name="productName"
                     oninput="nameonInput()"
                     required
                   />
@@ -55,10 +56,12 @@
                 <div class="inputBox">
                   <input
                     placeholder="판매가를 입력해 주세요."
-                    id="priceInput"
+                    id="price"
                     name="price"
                     type="number"
                     oninput="priceonInput()"
+                    pattern="^\d{1,3}(?:,\d{3})*$"
+                    title="숫자만 입력해주세요."
                     required
                   />
                   <div class="priceText"></div>
@@ -68,18 +71,17 @@
               <!-- 아이디 숫자로만 / 중복 불가 -->
               <div class="idBox formBoxdiv">
                 <div class="labelBox">
-                  <label for="id">자체 상품 코드</label>
+                  <label for="productId">자체 상품 코드</label>
                 </div>
                 <div class="inputBox">
                   <input
-                    name="id"
+                    name="productId"
                     type="number"
                     placeholder="숫자로 입력해 주세요."
-                    id="idInput"
+                    id="productId"
                     oninput="idonInput()"
                     required
                   />
-
                   <div class="idText"></div>
                 </div>
                 <div class="idCheckBtn">중복확인</div>
@@ -88,13 +90,13 @@
               <!-- 상세내용 -->
               <div class="contentBox formBoxdiv">
                 <div class="labelBox">
-                  <label for="content">상품 상세설명</label>
+                  <label for="productContent">상품 상세설명</label>
                 </div>
                 <div class="inputBox">
                   <textarea
                     placeholder="상세내용을 입력해 주세요."
-                    id="contentInput"
-                    name="content"
+                    id="productContent"
+                    name="productContent"
                     oninput="contentonInput()"
                     required
                   ></textarea>
@@ -107,14 +109,20 @@
                 <div class="labelBox">
                   <label for="productImage">이미지</label>
                 </div>
-                <input type="file" name="productImage" />
+                <input
+                  type="file"
+                  name="productImage"
+                  id="productImage"
+                  onchange="imageonChange()"
+                />
               </div>
+              <div class="imageupText"></div>
               <!-- 버튼 -->
               <div class="savebtnWrap">
                 <button
-                  id="savebtn"
+                  type="button"
+                  id="saveBtn"
                   class="svbtn bottomfont"
-                  onclick="save()"
                   disabled="true"
                 >
                   저장
@@ -133,5 +141,6 @@
     <!-- sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="/public/js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 </html>
