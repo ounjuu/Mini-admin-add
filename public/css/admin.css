@@ -1,3 +1,14 @@
 .formBoxdiv {
   display: flex;
 }
+
+.tbimgWrap {
+  width: 150px;
+  height: 150px;
+}
+
+.tbimgWrap img {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}

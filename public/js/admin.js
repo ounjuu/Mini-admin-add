@@ -4,7 +4,7 @@ let priceCheck = false;
 let contentCheck = false;
 let imageAdd = false;
 let firstidCheck = false;
-
+let product_data = [];
 // 이름 실시간 검사
 const nameonInput = () => {
   let namedataup = document.querySelector("#productName").value;
@@ -99,7 +99,7 @@ document.getElementById("saveBtn").addEventListener("click", function (event) {
   }).then((res) => {
     console.log(res.data); // object로 잘 들어옴.
     // 로컬스토리지에 넣어보자.
-    let product_data = JSON.parse(localStorage.getItem("data")) || [];
+    product_data = JSON.parse(localStorage.getItem("data")) || [];
     let filterdData = product_data.filter(
       (x) => Number(x.productId) === Number(res.data.id)
     );
@@ -109,6 +109,7 @@ document.getElementById("saveBtn").addEventListener("click", function (event) {
       resetForm();
       validCheck();
       formName.reset();
+      dataAll();
     }
     // 중복 체크 해준 후 로컬에 넣고 상품 등록 > 테이블 나와야 함.
     // idCheckBtn(product_data);
@@ -183,3 +184,87 @@ function resetForm() {
   imageAdd = false;
   firstidCheck = false;
 }
+
+// 하단 테이블 생성
+// 테이블 th 생성
+const tableWrap = document.querySelector(".mainTableWrap");
+tableWrap.innerHTML = `
+                  <table>        
+                    <thead>
+                      <tr>
+                        <th>이미지</th>
+                        <th>상품명</th>
+                        <th>판매가</th>
+                        <th>상품코드</th>
+                        <th>상품상세</th>
+                        <th>관리</th>
+                      </tr>
+                    </thead>
+                    <tbody class="tablebody">
+                    </tbody>
+                  </table>
+                  `;
+
+// 데이터 전역변수
+const dataAll = () => {
+  const tablebody = document.querySelector(".tablebody");
+  tablebody.innerHTML = product_data
+    .map((x, i) => {
+      return `
+            <tr id="tr${x.productId}">
+            <td class="img${x.productId} tdsize">
+                <div class="imgWrap${x.productId} tbimgWrap"><img src="${x.imagePath}" alt="productimg" /></div>
+                <span></span>
+                </td>
+              <td class="name${x.productId} tdsize">
+                <div>${x.productName}</div>
+                <span></span>
+                </td>
+              <td class="price${x.productId} tdsize">
+                <div>${x.price}</div>
+                <span></span>
+                </td>
+              <td class="content${x.productId} tdsize">
+                <div>${x.productContent}</div>
+                <span></span>
+              </td>
+              <td class="id${x.productId} tdsize">
+                <div>${x.productId}</div>
+                <span></span>
+              </td>
+
+              <td class="buttons">
+                <button class="deletebtn${x.productId}" onclick="deleteData(${x.productId})">
+                  삭제
+                </button>
+              </td>
+            </tr>
+            `;
+    })
+    .join("");
+
+  resetForm();
+  saveBtn.disabled = true;
+};
+
+//onload
+window.onload = function () {
+  const getData = JSON.parse(localStorage.getItem("data"));
+  if (getData) {
+    product_data.push(...getData);
+  } else if (!getData) {
+  }
+
+  //테이블 생성
+  dataAll();
+};
+
+const deleteData = (id) => {
+  const deleteTr = document.querySelector(`#tr${id}`);
+  deleteTr.remove();
+  const delete_data = product_data.filter(
+    (item) => Number(item.productId) !== id
+  );
+  product_data = delete_data;
+  localStorage.setItem("data", JSON.stringify(product_data));
+};
