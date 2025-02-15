@@ -49,8 +49,10 @@ const contentonInput = () => {
 const idonInput = () => {
   let productId = document.querySelector("#productId").value;
   if (productId.length < 1) {
+    document.querySelector(".idText").style.color = "red";
     document.querySelector(".idText").innerText =
       "등록할 상품의 코드를 숫자로 입력하세요.";
+
     idCheck = false;
   } else {
     document.querySelector(".idText").innerText = "";
@@ -64,6 +66,9 @@ const imageonChange = () => {
   let productImage = document.querySelector("#productImage").value;
   if (productImage.length < 1) {
     document.querySelector(".imageupText").innerText = "이미지를 등록하세요.";
+    document.querySelector("#preview").src = "";
+    document.querySelector("#preview").style.display = "none";
+    document.getElementById("imgpreviewbox").style.border = "solid 1px #ccc";
     imageAdd = false;
   } else {
     document.querySelector(".imageupText").innerText = "";
@@ -138,13 +143,20 @@ idCheckBtn.addEventListener("click", () => {
       (x) => Number(x.productId) === Number(res.data.id)
     );
     console.log(id_checked, " ???");
-    if (id_checked.length > 0) {
+    if (res.data.id === 0) {
+      idText.innerHTML = "상품 코드를 입력해주세요.";
+      idText.style.color = "red";
+      firstidCheck = false;
+      validCheck();
+    } else if (id_checked.length > 0) {
       idText.innerHTML = "중복입니다. 다른 상품 코드를 입력해주세요.";
+      idText.style.color = "red";
       firstidCheck = false;
       validCheck();
     } else {
       idText.innerHTML = "사용 가능한 상품 코드입니다.";
       firstidCheck = true;
+      idText.style.color = "green";
       validCheck();
     }
   });
@@ -176,6 +188,8 @@ function resetForm() {
   document.querySelector(".idText").innerText = "";
   document.querySelector(".imageupText").innerText = "";
   document.getElementById("preview").src = "";
+  document.querySelector("#preview").style.display = "none";
+  document.getElementById("imgpreviewbox").style.border = "solid 1px #ccc";
 
   // 체크 변수 초기화
   nameCheck = false;
@@ -295,7 +309,10 @@ document.getElementById("productImage").addEventListener("change", function () {
     },
   }).then((res) => {
     console.log("업로드된 이미지 URL:", res.data);
-    document.getElementById("preview").display = "block";
-    document.getElementById("preview").src = res.data.productImage;
+    if (res.data) {
+      document.getElementById("preview").style.display = "block";
+      document.getElementById("imgpreviewbox").style.border = "solid 1px #ccc";
+      document.getElementById("preview").src = res.data.productImage;
+    }
   });
 });

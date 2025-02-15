@@ -13,7 +13,7 @@ input {
 }
 
 .formBox {
-  margin: 10px;
+  margin: 25px 20px 10px 20px;
   border: 1px solid #ccc;
 }
 
@@ -30,7 +30,7 @@ input {
   height: auto;
   padding: 0px 15px;
   font-weight: bold;
-  background-color: rgb(162, 170, 176);
+  background-color: rgb(52, 52, 52);
   color: white;
   display: flex;
   align-items: center;
@@ -57,6 +57,31 @@ input {
   color: rgb(52, 93, 230);
   font-size: 11px;
 }
+
+/* 인풋 박스 및 크기 */
+.inputBox {
+  height: 45px;
+  display: flex;
+  align-items: center;
+}
+
+#productName {
+  height: 25px;
+  width: 350px;
+  margin: 10px 0px 10px 10px;
+  font-size: 11px;
+  padding: 0px 5px 0px 5px;
+}
+
+#price,
+#productId {
+  height: 25px;
+  width: 200px;
+  margin: 10px 0px 10px 10px;
+  font-size: 11px;
+  padding: 0px 5px 0px 5px;
+}
+
 /* 폼 input CSS */
 .formBoxdiv {
   display: flex;
@@ -77,34 +102,26 @@ input {
   display: flex;
 }
 
-#fileName {
-  width: 100px;
-  height: 20px;
-  background-color: pink;
-}
-
 /* 이미지 버튼 만들기 */
-.uploadDiv {
+.uploadDiv,
+#imgpreviewbox {
   width: 100px;
   height: 100px;
-  background-color: cornflowerblue;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.uploadDiv {
+  border: #ccc solid 1px;
+  cursor: pointer;
+}
+
 #uploadImage {
   width: 25px;
   height: 25px;
 }
 
-.imgpreviewbox {
-  width: 100px;
-  height: 100px;
-  background-color: cornflowerblue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 #preview {
   width: 100px;
   height: 100px;
@@ -112,6 +129,7 @@ input {
 }
 
 /* 중복확인 버튼 */
+
 .idCheckBtn {
   border: 1px solid #ccc;
   padding: 0px 5px;
@@ -119,23 +137,118 @@ input {
   display: flex;
   align-items: center;
   margin-left: 10px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.idText {
+  font-size: 10px;
+  color: green;
+  margin-left: 10px;
 }
 
 /* textarea */
 #productContent {
-  width: 100%;
+  width: 90%;
   height: 150px;
   padding: 10px;
   resize: none;
   border: 1px solid #ccc;
   outline: none;
+  margin: 10px 0px 10px 10px;
+  font-size: 11px;
+}
+
+.nameText {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  color: red;
+  padding-left: 10px;
+}
+
+.contentText,
+.priceText {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  color: red;
 }
 
 #productContent:focus {
   border-color: #626262; /* 포커스 시 테두리 색 변경 */
 }
 
-/* input div 사이즈
-.inputBox {
-  width: 50%;
-} */
+.inputBox,
+.textareaBox {
+  width: 80%;
+  border-bottom: 1px solid #ccc;
+}
+
+/* 이미지 업로드 박스 */
+.imgRightBox {
+  display: flex;
+  width: 80%;
+  border-bottom: 1px solid #ccc;
+}
+
+.uploadDiv,
+#imgpreviewbox {
+  margin: 10px 0px 10px 10px;
+}
+
+.fileNameText {
+  font-size: 11px;
+  color: #333;
+  text-align: center;
+  width: 100px;
+}
+
+#fileName {
+  height: 20px;
+  margin: 90px 10px 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  color: #333;
+}
+.imageupText {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  color: red;
+  font-size: 10px;
+  height: 20px;
+  margin: 90px 0px 10px 0px;
+}
+
+/* 저장 버튼 */
+.savebtnWrap {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0px 10px 0px;
+}
+
+.svbtn {
+  background-color: #333;
+  color: white; /* 글씨색 */
+  font-size: 10px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin-right: 10px;
+}
+
+.svbtn:hover {
+  background-color: #000;
+}
+
+.svbtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

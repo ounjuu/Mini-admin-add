@@ -82,9 +82,10 @@
                     oninput="idonInput()"
                     required
                   />
+
+                  <div class="idCheckBtn">중복확인</div>
                   <div class="idText"></div>
                 </div>
-                <div class="idCheckBtn">중복확인</div>
               </div>
 
               <!-- 상세내용 -->
@@ -92,7 +93,7 @@
                 <div class="labelBox">
                   <label for="productContent">상품 상세설명</label>
                 </div>
-                <div class="inputBox">
+                <div class="textareaBox">
                   <textarea
                     placeholder="상세내용을 입력해 주세요."
                     id="productContent"
@@ -117,17 +118,20 @@
                   style="display: none"
                   required
                 />
-                <div id="uploadDiv" class="uploadDiv">
-                  <img
-                    src="/public/img/plus_icon.png"
-                    alt="Upload Image"
-                    id="uploadImage"
-                  />
+                <div class="imgRightBox">
+                  <div id="uploadDiv" class="uploadDiv">
+                    <img
+                      src="/public/img/plus_icon.png"
+                      alt="Upload Image"
+                      id="uploadImage"
+                    />
+                  </div>
+                  <div id="imgpreviewbox"><img id="preview" src="" /></div>
+                  <div id="fileName"><div class="fileNameText"></div></div>
+                  <div class="imageupText"></div>
                 </div>
-                <div id="imgpreviewbox"><img id="preview" src="" /></div>
-                <div id="fileName"></div>
+                <div class="imageupText"></div>
               </div>
-              <div class="imageupText"></div>
               <!-- 버튼 -->
               <div class="savebtnWrap">
                 <button
@@ -141,8 +145,11 @@
               </div>
             </form>
           </div>
-          <!-- 테이블 여기에 저장~ -->
-          <div class="mainTableWrap"></div>
+          <div class="alltableWrap">
+            <div class="tableName">상품 등록 리스트</div>
+            <!-- 테이블 여기에 저장~ -->
+            <div class="mainTableWrap"></div>
+          </div>
         </div>
       </div>
       <!-- 푸터 -->
