@@ -6,6 +6,15 @@ input {
   border: solid #ccc 1px;
 }
 
+/* 폰트 */
+
+.notoSansfont {
+  font-family: "Noto Sans KR", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* 본문 중앙 정렬 */
 .contentWrapBox {
   display: flex;
@@ -54,7 +63,7 @@ input {
 }
 
 .blueText {
-  color: rgb(52, 93, 230);
+  color: rgb(67, 108, 240);
   font-size: 11px;
 }
 
@@ -71,10 +80,17 @@ input {
   margin: 10px 0px 10px 10px;
   font-size: 11px;
   padding: 0px 5px 0px 5px;
+  outline: none;
+}
+#productName:focus,
+#price:focus,
+#productId:focus {
+  border-color: #626262;
 }
 
 #price,
 #productId {
+  outline: none;
   height: 25px;
   width: 200px;
   margin: 10px 0px 10px 10px;
@@ -85,17 +101,6 @@ input {
 /* 폼 input CSS */
 .formBoxdiv {
   display: flex;
-}
-
-.tbimgWrap {
-  width: 150px;
-  height: 150px;
-}
-
-.tbimgWrap img {
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
 }
 
 .formBoxdiv {
@@ -251,4 +256,102 @@ input {
 .svbtn:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+/* 테이블 css 시작 */
+.alltableWrap {
+  margin: 25px 20px 10px 20px;
+}
+
+/* 상품등록 테이블 제목 */
+.tableName {
+  font-size: 13px;
+  padding: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  background-color: #343434;
+  color: white;
+}
+
+.mainTableWrap {
+  font-size: 11px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+
+/* 테이블 테두리 */
+table {
+  width: 95%;
+  border-collapse: collapse;
+}
+th {
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+}
+
+td {
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+}
+
+.tbimgWrap {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.tbimgWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tdsize1 {
+  width: 120px;
+  height: 120px;
+}
+
+.tdsize2 {
+  width: 120px;
+  height: 120px;
+}
+
+.tdsize3 {
+  width: 100px;
+}
+.tdsize4 {
+  width: 100px;
+}
+.tdsize5 {
+  width: 200px;
+  height: 120px; /* 고정된 높이 */
+  overflow: hidden; /* 넘치는 내용 숨김 */
+}
+
+.tdsize5 div {
+  height: 100%;
+  overflow-y: auto;
+  word-wrap: break-word;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.tdsize6 {
+  width: 80px;
+  text-align: center;
+}
+
+/* 하단 테이블 삭제 버튼 */
+
+.deletebtn {
+  border: 1px solid #ccc;
+  padding: 0px 5px;
+  font-size: 11px;
+  display: block; /* 버튼을 블록 요소로 설정 */
+  margin: 0 auto; /* 중앙 정렬 */
+  height: 20px;
+  cursor: pointer;
 }

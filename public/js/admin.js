@@ -189,7 +189,8 @@ function resetForm() {
   document.querySelector(".imageupText").innerText = "";
   document.getElementById("preview").src = "";
   document.querySelector("#preview").style.display = "none";
-  document.getElementById("imgpreviewbox").style.border = "solid 1px #ccc";
+  document.getElementById("imgpreviewbox").style.border = "none";
+  document.getElementById("fileName").innerText = "";
 
   // 체크 변수 초기화
   nameCheck = false;
@@ -226,30 +227,29 @@ const dataAll = () => {
   tablebody.innerHTML = product_data
     .map((x, i) => {
       return `
-            <tr id="tr${x.productId}">
-            <td class="img${x.productId} tdsize">
+            <tr id="tr${x.productId}" class="notoSansfont">
+            <td class="img${x.productId} tdsize1">
                 <div class="imgWrap${x.productId} tbimgWrap"><img src="${x.imagePath}" alt="productimg" /></div>
                 <span></span>
                 </td>
-              <td class="name${x.productId} tdsize">
+              <td class="name${x.productId} tdsize2">
                 <div>${x.productName}</div>
                 <span></span>
                 </td>
-              <td class="price${x.productId} tdsize">
+              <td class="price${x.productId} tdsize3">
                 <div>${x.price}</div>
                 <span></span>
                 </td>
-              <td class="content${x.productId} tdsize">
-                <div>${x.productContent}</div>
-                <span></span>
-              </td>
-              <td class="id${x.productId} tdsize">
+              <td class="id${x.productId} tdsize4">
                 <div>${x.productId}</div>
                 <span></span>
               </td>
-
-              <td class="buttons">
-                <button class="deletebtn${x.productId}" onclick="deleteData(${x.productId})">
+              <td class="content${x.productId} tdsize5">
+                <div>${x.productContent}</div>
+                <span></span>
+              </td>
+              <td class="buttons tdsize6">
+                <button class="deletebtn${x.productId} deletebtn" onclick="deleteData(${x.productId})">
                   삭제
                 </button>
               </td>
